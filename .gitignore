@@ -1,0 +1,8 @@
+# Ignore Vagrant build files.
+.vagrant/
+*.box
+
+# Ignore testing and provisioning files.
+dist/**/*
+!dist/Vagrantfile
+box-*.txt

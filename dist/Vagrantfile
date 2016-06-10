@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#
+# This is a Vagrant script that manages the Scopewerx development VM.
+#
+# Useful commands:
+#   vagrant up      :: Starts the.box or resumes operation.
+#   vagrant suspend :: Saves and pauses.box state.
+#   vagrant halt    :: Powers down the.box.
+#   vagrant destroy :: Resets all VM changes and reverts to the downloaded.box.
+#   guestvm         :: Prints.box information when run inside the guest VM.
+#
+
+$script = <<SCRIPT
+  echo "You can start a server daemon here!"
+SCRIPT
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "summer-ubuntu64-v0.1.0"
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.provision "shell", inline: $script
+end

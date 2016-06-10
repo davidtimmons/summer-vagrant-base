@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#
+# Shell script that prints information about the guest virtual machine.
+# Source: https://github.com/pro-vagrant/vagrant-box-factory-apache
+#
+
+echo "============================================================"
+for filename in /home/vagrant/box-info/box-*
+do
+  echo `cat $filename`
+done
+
+GUEST_ADDITIONS=`lsmod | grep -io vboxguest | xargs modinfo | grep -iw version`
+
+echo "VirtualBox Guest Additions: ${GUEST_ADDITIONS}"
+echo "============================================================"
