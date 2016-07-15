@@ -69,7 +69,8 @@ printf "\n::: PYTHON :::\n\n" >> $LOG_FILE
 echo "Installing: Python..."
 su -c "source $BASH_PROFILE && \
        brew install pyenv && \
-       pyenv install $PYTHON_VERSION" \
+       pyenv install $PYTHON_VERSION && \
+       pyenv global $PYTHON_VERSION" \
        vagrant >> $LOG_FILE
 echo -e "\n# pyenv (Python Environment):\n" >> $BASH_PROFILE
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $BASH_PROFILE

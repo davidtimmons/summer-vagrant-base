@@ -7,7 +7,7 @@
 
 # Configuration Options
 BOX_NAME="summer-ubuntu64"
-BOX_VERSION="v0.1.0"
+BOX_VERSION="v0.2.0"
 FILE="${BOX_NAME}-${BOX_VERSION}.box"
 MYSQL_ROOT_PASSWORD="12345" # Replace with desired root password!
 
