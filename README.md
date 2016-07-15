@@ -17,7 +17,7 @@ Linux Brew for use as a development environment good for any summer side project
 
 *Ubuntu Server 14.04 LTS (Trusty Tahr)* sourced from https://vagrantcloud.com/ubuntu/.
 
-# 1.1 Managing languages within the provisioned box.
+## 1.1 Managing languages within the provisioned box.
 
 The provisioned box uses `pyenv` and `nodenv` to control language versions. Use these tools to
 download and use different versions of Python and Node.js respectively.
