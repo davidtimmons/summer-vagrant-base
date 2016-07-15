@@ -15,22 +15,35 @@
 #
 
 $script = <<SCRIPT
-  LOG_FILE="/tmp/up-script.log"
+  LOG_FILE="/home/vagrant/logs/up-script.log"
 
+  # Allow user vagrant to access the log file.
+  touch $LOG_FILE
+  chmod 775 $LOG_FILE
+  chown vagrant $LOG_FILE
+
+  # This directory links to the project directory on the host machine.
   cd /vagrant
 
-  printf "\n::: PYTHON PACKAGES :::\n\n" >> $SWV_LOG_FILE 2>&1
-  pip install flask
+  # This following block is an example of how you can install global Python packages.
+  # Alternately, use <pip install -r requirements.txt> for a more traditional approach.
+    
+  printf "\n::: PYTHON PACKAGES :::\n\n" >> $LOG_FILE 2>&1
+  # echo "Installing: Python packages..."
+  # su -c "source /home/vagrant/.bash_profile && \
+  #        pip install --upgrade pip >> $LOG_FILE 2>&1 && \
+  #        pip install Flask >> $LOG_FILE 2>&1" \
+  #        vagrant >> $LOG_FILE 2>&1
 
   printf "\n::: MAILHOG :::\n\n" >> $LOG_FILE 2>&1
-  echo "Starting: MailHog..."
+  echo "Starting: MailHog email testing service..."
   source /home/vagrant/.bash_profile
   daemon -u vagrant MailHog
 
 SCRIPT
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "summer-ubuntu64-v0.1.0"
+  config.vm.box = "summer-ubuntu64-v0.2.0"
   config.vm.network "forwarded_port", guest: 3000, host: 3000 # Run the application on this port.
   config.vm.network "forwarded_port", guest: 8025, host: 3001 # MailHog HTTP interface.
   config.vm.provision "shell", inline: $script
