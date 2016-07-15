@@ -15,12 +15,6 @@ MYSQL_ROOT_PASSWORD="12345" # Replace with desired root password!
 BASH_PROFILE="/home/vagrant/.bash_profile"
 LOG_FILE="/tmp/provision-script.log"
 
-# Precondition
-if [ -z $1 ]; then # Check if the first script argument is null.
-   echo "Please run <build.sh> and supply a MySQL password!"
-   exit 1
-fi
-
 # Installation Log
 printf "Provisioning Log\n" >> $LOG_FILE 2>&1
 
