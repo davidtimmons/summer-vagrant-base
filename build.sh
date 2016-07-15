@@ -9,7 +9,6 @@
 BOX_NAME="summer-ubuntu64"
 BOX_VERSION="v0.2.0"
 FILE="${BOX_NAME}-${BOX_VERSION}.box"
-MYSQL_ROOT_PASSWORD="12345" # Replace with desired root password!
 
 # Store Box Information.
 echo $BOX_NAME > ./box-info/box-name.txt
@@ -17,7 +16,6 @@ echo $BOX_VERSION > ./box-info/box-version.txt
 date > ./box-info/box-date.txt
 
 # Create the Box
-export MYSQL_ROOT_PASSWORD
 vagrant destroy -f
 vagrant up --destroy-on-error && \
 vagrant package --vagrantfile Vagrantfile-include --output $FILE && \

@@ -22,5 +22,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: "mv /home/vagrant/box-info/guestvm /usr/bin && chmod 755 /usr/bin/guestvm"
 
   # Enable provisioning with a shell script.
-  config.vm.provision "shell", path: "provision.sh", args: ENV['MYSQL_ROOT_PASSWORD']
+  config.vm.provision "shell", path: "configure.sh", args: ENV['MYSQL_ROOT_PASSWORD']
 end

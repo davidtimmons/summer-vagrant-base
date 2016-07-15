@@ -11,6 +11,7 @@
 NODE_VERSION="6.1.0" # <nodenv install -l> prints all available versions.
 PYTHON_VERSION="3.5.1"
 MYSQL_VERSION="5.7"
+MYSQL_ROOT_PASSWORD="12345" # Replace with desired root password!
 BASH_PROFILE="/home/vagrant/.bash_profile"
 LOG_FILE="/tmp/provision-script.log"
 
@@ -101,10 +102,10 @@ expect -c "
   set timeout 1800
   spawn apt-get install mysql-server -y
   expect \"Enter root password:\" {
-    send \"$1\r\"
+    send \"$MYSQL_ROOT_PASSWORD\r\"
   }
   expect \"Re-enter root password:\" {
-    send \"$1\r\"
+    send \"$MYSQL_ROOT_PASSWORD\r\"
   }
   expect eof
 " >> $LOG_FILE 2>&1
