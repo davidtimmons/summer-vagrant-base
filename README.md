@@ -26,6 +26,6 @@ download and use different versions of Python and Node.js respectively.
 
 * There are small differences between Unix Bash shell and the Mac OS X shell. You may need to
   adjust these build scripts if using a Mac.
-* Run `vagrant destroy -f && vagrant box remove <name>` (where *<name>* is the name of the
+* Run `vagrant destroy -f && vagrant box remove <name>` (where `<name>` is the name of the
   installed box) to destroy a bad installation attempt.
 * Provisioning logs are stored in the provisioned box at `/home/vagrant/logs/`.
