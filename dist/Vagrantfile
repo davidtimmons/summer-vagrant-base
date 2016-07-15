@@ -2,22 +2,36 @@
 # vi: set ft=ruby :
 
 #
-# This is a Vagrant script that manages the Scopewerx development VM.
+# Use this Vagrant script to install application dependencies and start services within
+# the development box.
 #
 # Useful commands:
 #   vagrant up      :: Starts the.box or resumes operation.
-#   vagrant suspend :: Saves and pauses.box state.
-#   vagrant halt    :: Powers down the.box.
-#   vagrant destroy :: Resets all VM changes and reverts to the downloaded.box.
+#   vagrant suspend :: Saves and pauses box state.
+#   vagrant halt    :: Powers down the box.
+#   vagrant destroy :: Resets all VM changes and reverts to the downloaded box.
+#   vagrant ssh     :: Log into the box as local user <vagrant>.
 #   guestvm         :: Prints.box information when run inside the guest VM.
 #
 
 $script = <<SCRIPT
-  echo "You can start a server daemon here!"
+  LOG_FILE="/tmp/up-script.log"
+
+  cd /vagrant
+
+  printf "\n::: PYTHON PACKAGES :::\n\n" >> $SWV_LOG_FILE 2>&1
+  pip install flask
+
+  printf "\n::: MAILHOG :::\n\n" >> $LOG_FILE 2>&1
+  echo "Starting: MailHog..."
+  source /home/vagrant/.bash_profile
+  daemon -u vagrant MailHog
+
 SCRIPT
 
 Vagrant.configure(2) do |config|
   config.vm.box = "summer-ubuntu64-v0.1.0"
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 3000, host: 3000 # Run the application on this port.
+  config.vm.network "forwarded_port", guest: 8025, host: 3001 # MailHog HTTP interface.
   config.vm.provision "shell", inline: $script
 end

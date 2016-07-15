@@ -8,7 +8,9 @@ Vagrant.configure(2) do |config|
   # Display a message once the virtual machine has finished booting.
   config.vm.post_up_message =
     "Vagrant has finished booting the development environment. " +
-    "Run 'guestvm' to view information about this box.\n" +
+    "Run 'guestvm' inside this box to view information about it.\n" +
+    "Set the default MySQL root database password in the <build.sh> file.\n"
     "Application address: http://localhost:3000\n" +
-    "Super user account: vagrant/vagrant"
+    "MailHog email server interface address: http://localhost:3001\n" +
+    "Super user account default password: vagrant"
 end
