@@ -4,7 +4,7 @@ Summer Vagrant Base Box
 These shell scripts produce a Vagrant base box provisioned with Python, Node.js, Ruby, MySQL, and
 Linux Brew for use as a development environment good for any summer side project!
 
-# Quick start
+# Quick Start
 
 * Change language versions and the database password in `configure.sh`.
 * Open a Bash terminal, and run `source build.sh` to create a base box.
@@ -17,7 +17,7 @@ Linux Brew for use as a development environment good for any summer side project
 
 *Ubuntu Server 14.04 LTS (Trusty Tahr)* sourced from https://vagrantcloud.com/ubuntu/.
 
-## Managing languages within the provisioned box
+## Managing Languages Within the Provisioned Box
 
 The provisioned box uses `pyenv` and `nodenv` to control language versions. Use these tools to
 download and use different versions of Python and Node.js respectively.
